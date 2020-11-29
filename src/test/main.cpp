@@ -3,15 +3,16 @@
 #include <vector>
 #include <string>
 int main() {
-    inx::data::LinkedList<int> list;
+    inx::data::BSTNode<int> node(10);
+    node.insert(5);
+    node.insert(15);
 
-    list.add_node(10);
-    list.add_node(15);
-    list.add_node(17);
-    list.add_node(124);
-    list.add_node(432);
+    inx::data::BSTNode<int>::print(&node);        
 
-    for (inx::data::LinkedListNode<int>* node = list.get_head(); node != nullptr; node = node->next) {
-        inx::io::println() << node->data;
-    }
+    inx::data::BSTNode<int>* result = inx::data::BSTNode<int>::search(15, &node);
+    inx::data::BSTNode<int>* result2 = inx::data::BSTNode<int>::search(16, &node);
+
+    inx::io::printsep() << result << result2;
+
+    inx::io::newline();
 }
