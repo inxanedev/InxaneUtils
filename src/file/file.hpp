@@ -1,3 +1,4 @@
+#pragma once
 #include <fstream>
 typedef unsigned char byte;
 namespace inx {
