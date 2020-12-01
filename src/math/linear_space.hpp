@@ -3,6 +3,7 @@
 
 namespace inx {
     namespace math {
+		// this function is made so i don't have to copy code three times
         template <typename T>
     	void _linearSpaceFill(std::vector<T>& vec, T a, T b, uint32_t count) {
     		vec.reserve(count);
