@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <string>
 namespace inx {
 	namespace vec {
 		template <typename T>
