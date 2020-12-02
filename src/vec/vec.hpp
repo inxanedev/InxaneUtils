@@ -5,7 +5,7 @@
 namespace inx {
 	namespace vec {
 		template <typename T>
-		std::string toString(const std::vector<T>& vec, char start = '[', char end = ']', std::string separator = ", ") {
+		std::string to_string(const std::vector<T>& vec, char start = '[', char end = ']', std::string separator = ", ") {
 			std::ostringstream result;
 			result << start;
 			for (size_t i = 0; i < vec.size(); i++) {

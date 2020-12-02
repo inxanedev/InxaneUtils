@@ -18,7 +18,7 @@ namespace inx {
 					return m_Length;
 				}
 				template <typename T>
-				T getValue(uint32_t index) {
+				T get_value(uint32_t index) {
 					T result;
 					memcpy(&result, &m_Data[index], sizeof(result));
 					return result;
@@ -26,7 +26,7 @@ namespace inx {
 				~ByteFileReader() {
 					delete[] m_Data;
 				}
-				byte* getRawData() {
+				byte* get_raw_data() {
 					return m_Data;
 				}
 			private:
