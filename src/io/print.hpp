@@ -28,8 +28,8 @@ namespace inx {
                 }
         };
         void newline() {
-			std::cout << std::endl;
-		}
+            std::cout << std::endl;
+        }
         void flush() {
             std::cout.flush();
         }
