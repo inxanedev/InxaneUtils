@@ -26,7 +26,7 @@ namespace inx {
 				~ByteFileReader() {
 					delete[] m_Data;
 				}
-					byte* getRawData() {
+				byte* getRawData() {
 					return m_Data;
 				}
 			private:
