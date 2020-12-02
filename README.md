@@ -85,6 +85,10 @@ This is a function that takes in `a`, `b`, and `c` from a quadratic equation, an
 
     auto [a, b] = inx::math::quadratic<double>(1, 5, 6);
 This saves both of the results into variables `a` and `b`, using structured binding.
+### inx::math::factorial
+This is a simple factorial function. Because of the nature of factorials, you should probably use the `uint64_t` type as the template argument, because it is the largest mostly supported data type.
+
+    uint64_t result = inx::math::factorial<uint64_t>(20);
 # inx::vec
 This is a module that has helper functions for dealing with vectors.
 ### inx::vec::to_string()
