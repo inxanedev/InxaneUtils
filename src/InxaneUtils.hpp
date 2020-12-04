@@ -9,3 +9,4 @@
 #include "vec/vec.hpp"
 #include "data/linked_list.hpp"
 #include "data/bst.hpp"
+#include "string/in_place.hpp"
