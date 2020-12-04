@@ -101,4 +101,10 @@ There are optional parameters which you can use to format it differently.
 This is how the function declaration looks like, you can modify any of these parameters.
 
     std::string to_string(const std::vector<T>& vec, char start = '[', char end = ']', std::string separator = ", ")
+# inx::string
+This is a module that has helper functions for dealing with string.
+### inx::string::reverse()
+This function takes a string by reference and reverses it in-place.
 
+    std::string cool_string = "Hello World!";
+    inx::string::reverse(cool_string);
