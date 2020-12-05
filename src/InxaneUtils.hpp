@@ -10,3 +10,4 @@
 #include "data/linked_list.hpp"
 #include "data/bst.hpp"
 #include "string/in_place.hpp"
+#include "data/vote.hpp"
