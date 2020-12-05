@@ -8,21 +8,18 @@ namespace inx {
         class Vote {
             private:
                 std::unordered_map<T, uint32_t> m_Data;
-                T get_from_lambda(std::function<T()> f) {
-                    
-                }
             public:
                 Vote(const std::vector<T>& keys) {
-                    for (const T& key : keys)
-                        m_Data.emplace(key, 0);
+                    for (const T& key : keys) m_Data.emplace(key, 0);
                 }
                 
                 void vote(T&& key) {
-                    if (m_Data.find(key) != m_Data.end()) {
-                        m_Data[key]++;
-                    }
+                    if (m_Data.find(key) != m_Data.end()) m_Data[key]++;
                 }
-
+                void remove_vote(T&& key) {
+                    if (m_Data.find(key) != m_Data.end())
+                        if (m_Data[key] != 0) m_Data[key]--;
+                }
                 uint32_t get_votes(T&& key) {
                     return m_Data[key];
                 }
