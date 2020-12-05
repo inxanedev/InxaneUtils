@@ -60,7 +60,23 @@ Simple example:
     
     inx::data::BSTNode<int>* result = inx::data::BSTNode::search(15, &tree);
 Some of these functions are static, the reason why is because they use recursion.
+### inx::data::Vote
+This is my own data structue/utility structure called Vote. You have a list of elements, for example people, and you can vote for any of them.
+You can access the person with the most and least amount of votes, or access the amount of votes for any indiviudual element.
 
+Simple example:
+
+    inx::data::Vote<std::string> vote({"Brian", "Jeffrey", "Anne"});
+    vote.vote("Brian");
+    vote.vote("Jeffrey");
+    vote.vote("Jeffrey");
+    inx::io::printsep() << vote.get_votes("Brian")
+                        << vote.get_votes("Jeffrey")
+                        << vote.get_votes("Anne")
+                        << vote.top()
+                        << vote.bottom();
+    // Outputs 1 2 0 Jeffrey Anne
+Under the hood, this implementation uses a simple std::unordered_map.
 # inx::file
 This is a module that provides some helper utilities when dealing with files.
 ### inx::file::ByteFileReader
