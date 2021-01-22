@@ -124,3 +124,11 @@ This function takes a string by reference and reverses it in-place.
 
     std::string cool_string = "Hello World!";
     inx::string::reverse(cool_string);
+# inx::shell
+This is a module that provides helper functions for dealing with shell commands.
+### inx::shell::read_stdout()
+This function takes in a command, captures its stdout and returns an std::string with the output.
+
+    std::string files = inx::shell::read_stdout("ls .");
+    std::cout << files << std::endl;
+    // outputs the list of files in the current directory
