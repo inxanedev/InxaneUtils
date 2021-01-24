@@ -132,3 +132,63 @@ This function takes in a command, captures its stdout and returns an std::string
     std::string files = inx::shell::read_stdout("ls .");
     std::cout << files << std::endl;
     // outputs the list of files in the current directory
+# inx::benchmarking
+This is a module which provides useful timers and functions to benchmark C++ code internally.
+### inx::benchmarking::BasicTimer
+This is the implementation of the most basic timer, which has a start() and stop() function.  
+The stop function by default prints the result in a nice formatted way to stdout, however you can specify an output variable of type `inx::benchmarking::duration` by reference to store the result there instead.  
+This class has a template argument which represents the measurement format. By default, it's set to milliseconds, however you can choose microseconds as well, which are more precise.
+
+    // Simple example of timing some code
+    using namespace inx::benchmarking;
+    BasicTimer<time_format::MICROSECONDS> timer;
+    timer.start(); // starts the timer
+
+    // Some code which takes some time to complete
+    for (int i = 0; i < 10000; i++) {
+        std::cout << i << std::endl;
+    }
+
+    timer.stop(); // Prints the result to stdout
+
+To store the result in a duration variable instead of printing to stdout, you can do this:
+
+    duration dur;
+    timer.stop(dur);
+    // dur now contains the measured time.
+
+Note: `inx::benchmarking::duration` is simply an alias for `uint64_t`, so you should be fine with storing microseconds in this type, it will be big enough.
+### inx::benchmarking::ScopeTimer
+This is a timer which measures an entire scope, from start to finish.  
+To use it, simply allocate the timer on the stack in a scope. It will start automatically, and stop automatically when the scope ends. By default it prints to stdout like the BasicTimer, and you can also pass in an output variable to the constructor.  
+However, the output variable syntax is a bit different because you don't call `timer.stop()` explicitly. To deal with that, instead of passing the output variable as a reference, you pass a pointer to `inx::benchmarking::duration` in the constructor. By default it will have the value of `nullptr`, so that gets handled automatically.  
+If you provided an output variable it will automatically set that variable.
+
+    using namespace inx::benchmarking;
+    void cool_function() {
+        ScopeTimer timer;
+        for (int i = 0; i < 10000; i++) {
+            std::cout << i << std::endl;
+        }
+    }
+
+    // when you call the function the timer will be started automatically now
+    cool_function();
+### inx::benchmarking::TimeFunction()
+This function accepts any lambda, and times the execution of that lambda. It automatically prints the measured time by default, and you can specify an output variable as the second argument.  
+To keep the code simple, it only accepts lambdas, but you can measure the execution of a regular non-lambda function by simply calling the function in the lambda.
+
+    inx::benchmarking::TimeFunction([]() {
+        for (int i = 0; i < 10000; i++) {
+            std::cout << i << std::endl;
+        }
+    });
+    // Prints the time it took to complete the execution of the lambda
+### inx::benchmarking::time_format_cast()
+If you'd like to cast between millisecond and microsecond durations, you can use this function.  
+For example, if you measured the time in microseconds and you want to now cast the duration to milliseconds instead:
+
+    using namespace inx::benchmarking;
+    // here dur is a `inx::benchmarking::duration` which was measured with microseconds
+    std::cout << time_format_cast<time_format::MILLISECONDS>(dur) << std::endl;
+    // this line prints the converted duration from us to ms.
