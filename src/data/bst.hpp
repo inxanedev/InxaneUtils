@@ -50,7 +50,7 @@ namespace inx {
                     if (node->left != nullptr) {
                         print(node->left);
                     }
-                    inx::io::println() << node->data;
+                    inx::io::print(node->data);
                     if (node->right != nullptr) {
                         print(node->right);
                     }

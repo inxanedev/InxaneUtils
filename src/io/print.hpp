@@ -2,31 +2,24 @@
 #include <iostream>
 namespace inx {
     namespace io {
-        char endl = '\n';
-        class print {
-            public:
-                template <typename T>
-                print operator <<(const T& msg) {
-                    std::cout << msg;
-                    return *this;
-                }
-        };
-        class println {
-           public:
-               template <typename T>
-               println operator <<(const T& msg) {
-                   std::cout << msg << std::endl;
-                   return *this;
-               }
-        };
-        class printsep {
-            public:
-                template <typename T>
-                printsep operator <<(const T& msg) {
-                    std::cout << msg << " ";
-                    return *this;
-                }
-        };
+        template <typename T>
+        void printsep(T t) { std::cout << t << std::endl; }
+
+        template <typename T, typename... Rest>
+        void printsep(T t, Rest... rest) {
+            std::cout << t << ' ';
+            printsep(rest...);
+        }
+
+        template <typename T>
+        void print(T t) { std::cout << t << std::endl; }
+
+        template <typename T, typename... Rest>
+        void print(T t, Rest... rest) {
+            std::cout << t << std::endl;
+            print(rest...);
+        }
+
         void newline() {
             std::cout << std::endl;
         }
