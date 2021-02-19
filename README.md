@@ -111,7 +111,7 @@ This is a module that has helper functions for dealing with vectors.
 This function turns a `std::vector` into a nicely formatted string in the Python style.
 
     std::vector<int> v = {1, 2, 3, 4};
-    inx::io::println() << inx::math::to_string(v);
+    inx::io::println() << inx::vec::to_string(v);
     // outputs [1, 2, 3, 4]
 There are optional parameters which you can use to format it differently.
 This is how the function declaration looks like, you can modify any of these parameters.
