@@ -7,13 +7,13 @@ Add the project source to your include directiories and use the following line o
 Everything is in the `inx` namespace now. The library is not being compiled because it uses a lot of templates for ease of use, which is also why this library is header-only as well.
 # inx::io
 This module has a few utility functions to make printing to stdout a little less difficult, and a few other stuff.
-### inx::io::print(), inx::io::printsep(), inx::io::println()
-This is a set of classes (yes, classes but with overloaded `()` operators) that make printing easier. You probably want to use `inx::io::printsep` and `inx::io::println`. The first, `printsep`, prints what you pass to it, but separated by a space. This is something a bit boring to do with `iostream`, because you have to include the space yourself, but this doesn't force you to do that.
+### inx::io::print(), inx::io::printsep()
+These are functions that take in any amount of parameters and they print the arguments in different ways.  
+The `inx::io::print()` function prints all of its argument on different lines, and the `inx::io::printsep()` function prints them all separated with a space, with a newline at the end.
 
-To use these functions you have to instantiate that class and use the `<<` operator, which you can chain.
+    inx::io::print("Hello", "world", 5);
+    inx::io::printsep(1, 2, 3.0);
 
-    inx::io::printsep() << "Hello," << "World!" << 10 + 5;
-    inx::io::println() << "Hello," << "World!" << 10 + 5;
 ### inx::io::input()
 This is a templated function that makes taking input from the console a bit easier.
 This is how you can quickly get an `int` from the user:
